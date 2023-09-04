@@ -11,7 +11,7 @@ export default function Nav() {
 
   // This function fetches a list of categories and sets them to the "categories" state.
   useEffect(() => {
-    async function getItemsData() {
+    async function getCategoriesData() {
       try {
         const { data } = await axios.get('/api/products/categories')
         setCategories(data)
@@ -19,7 +19,7 @@ export default function Nav() {
         console.error(error)
       }
     }
-    getItemsData()
+    getCategoriesData()
   }, [])
 
   // This function is triggered whenever an item in the dropdown menu is clicked
@@ -27,7 +27,7 @@ export default function Nav() {
   // It navigates the user to the categories page and, in addition, sends the name of the category over with it
   function handleClick(category) {
     navigate(
-      '/categories',
+      '/category',
       {
         state: {
           category,

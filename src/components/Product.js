@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 
 
-export default function CategorySingle() {
+export default function Product() {
 
 
   // ! State
@@ -14,20 +14,20 @@ export default function CategorySingle() {
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
 
-  const { itemId } = useParams()
+  const { productId } = useParams()
   // ! On initial render
   useEffect(() => {
     async function getItemData(){
       try {
-        const { data } = await axios.get(`/api/products/${Number(itemId)}`)
+        const { data } = await axios.get(`/api/products/${Number(productId)}`)
         setItem(data)
-        console.log('Data received from API: ', itemId)
+        console.log('Data received from API: ', productId)
       } catch (err) {
         console.error(err)
       }
     }
     getItemData()
-  }, [itemId]) 
+  }, [productId]) 
 
   return (
     <>

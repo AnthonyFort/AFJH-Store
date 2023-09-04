@@ -4,26 +4,15 @@ import axios from 'axios'
 
 // Page Components
 import Home from './components/Home'
-import CategoriesList from './components/CategoriesList'
-import CategorySingle from './components/CategorySingle'
-import Item from './components/Item'
+import Category from './components/Category'
+import Product from './components/Product'
 import NotFound from './components/NotFound'
 
 // Global Components
 import Nav from './components/Nav'
 import Footer from './components/Footer'
 
-const App = () => {
-
-  const [ items, setItems ] = useState([])
-
-  useEffect(() => {
-    const getData = async () => {
-      const { data } = await axios.get('/api/products') // * <-- replace with your endpoint
-      console.log(data)
-    }
-    getData()
-  })
+export default function App() {
 
   return (
     <>
@@ -31,8 +20,8 @@ const App = () => {
       <main>
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/categories' element={<CategoriesList />} />
-          <Route path='/categories/:itemId' element={<CategorySingle />} />
+          <Route path='/category' element={<Category />} />
+          <Route path='/category/:productId' element={<Product />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
       </main>
@@ -41,4 +30,3 @@ const App = () => {
   )
 }
 
-export default App

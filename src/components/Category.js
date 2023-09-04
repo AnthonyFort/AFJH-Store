@@ -5,53 +5,53 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
-export default function CategoriesList() {
+export default function Category() {
 
   // The state of "category" was sent via Nav.js with useNavigate
   // useLocation unwraps this state so it can be accessed in this file
   const { state } = useLocation()
-  const [items, setItems] = useState([])
+  const [products, setProducts] = useState([])
 
   // This function fetches all the items
   useEffect(() => {
-    async function getItemsData() {
+    async function getProductsData() {
       try {
         const { data } = await axios.get('/api/products')
-        setItems(data)
+        setProducts(data)
       } catch (error) {
         console.error(error)
       }
     }
-    getItemsData()
+    getProductsData()
   }, [])
 
   return (
     <div className="category-page">
       <div className="category-inside">
         <h1>{state.category.charAt(0).toUpperCase() + state.category.substr(1)}</h1>
-        {items.length > 0 ?
+        {products.length > 0 ?
           <Container fluid className="fluid-container" >
             <Row>
               {
                 // The items are filtered, returning only those whose category matches the current category state
                 // Then, the remaining items are mapped, and, for each item, a new Col is created, displaying a picture and the title text
-                items.filter(item => item.category === state.category)
-                  .map(item => {
+                products.filter(product => product.category === state.category)
+                  .map(product => {
                     return (
-                      <div key={item.id} className="item-container">
+                      <div key={product.id} className="item-container">
                         <Col
                           as={Link}
-                          to={`/categories/${item.id}`}
+                          to={`/category/${product.id}`}
                           className="item"
                           xs="6"
                           md="4"
                           lg="3"
-                          style={{ backgroundImage: `url(${item.image})` }}
+                          style={{ backgroundImage: `url(${product.image})` }}
                         >
                         </Col>
                         <div className="category-text">
-                          <h3>{item.title}</h3>
-                          <p>£{item.price}</p>
+                          <h3>{product.title}</h3>
+                          <p>£{product.price}</p>
                         </div>
                       </div>
                     )
@@ -64,6 +64,5 @@ export default function CategoriesList() {
         }
       </div>
     </div>
-
   )
 }

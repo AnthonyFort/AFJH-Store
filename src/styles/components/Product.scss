@@ -1,27 +1,30 @@
 .product-container {
-    color: black;
-text-align: center;
-padding:20px;
+  color: black;
+  text-align: center;
+  padding: 20px;
 }
 
 .product-image {
-    background-size: contain;
-    background-repeat: no-repeat; 
-    background-position:center;
-    margin-top: 100px;
-}
-.product-button {
-    text-align:center;
-}
-.product-title {
-    padding-top:20px;
-    font-weight: bold;
-}
-.price {
-    font-weight:bold;
-    p {
-        font-size:20px;
-        color:#4d9f98;
-    }
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-top: 100px;
 }
 
+.product-button {
+  text-align: center;
+}
+
+.product-title {
+  padding-top: 20px;
+  font-weight: bold;
+}
+
+.price {
+  font-weight: bold;
+
+  p {
+    font-size: 20px;
+    color: #4d9f98;
+  }
+}

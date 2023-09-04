@@ -5,8 +5,8 @@ export default function Footer() {
     <footer>
       &copy; AFJH
       <nav className="footer-nav">
-        <Link to="/*" className="footer-link">Contact Us</Link>
-        <Link to="/*" className="footer-link">Cookie Policy</Link>
+        <Link to="/contact-us" className="footer-link">Contact Us</Link>
+        <Link to="/cookie-policy" className="footer-link">Cookie Policy</Link>
       </nav>
     </footer>
   )
